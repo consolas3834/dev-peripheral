@@ -1,0 +1,33 @@
+#!/bin/sh
+
+GPIO_CHIP=$1
+GPIO_PIN=$2
+GPIO_ON=0
+GPIO_OFF=1
+
+gpio_set(){
+    local chip=$1
+    local gpio=$2
+    local value=$3
+    gpioset $chip $gpio=$value
+}
+
+main(){
+
+    case $1 in
+    on|ON)
+        gpio_set $GPIO_CHIP $GPIO_PIN $GPIO_ON
+        ;;
+    off|OFF)
+        gpio_set $GPIO_CHIP $GPIO_PIN $GPIO_OFF
+        ;;
+    0|1)  
+        gpio_set $GPIO_CHIP $GPIO_PIN $1
+        ;;
+    *)  echo "Invalid parameter"
+        ;;
+    esac
+
+}
+
+main $3

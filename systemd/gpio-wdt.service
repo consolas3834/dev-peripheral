@@ -1,2 +1,14 @@
+[Unit]
+Description="Watchdog enable service"
+Requisite=watchdog.service
+After=watchdog.service
 
-依赖于watchdog.service
+[Service]
+Type=simple
+ExecStart=
+StandardOutput=journal
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

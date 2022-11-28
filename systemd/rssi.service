@@ -1,0 +1,11 @@
+[Unit]
+Description=Get RSSI of LTE
+After=NetworkManager.service
+
+[Service]
+Type=oneshot
+ExecStart=
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
